@@ -2,15 +2,15 @@ mapboxgl.accessToken = mapToken;
 const map = new mapboxgl.Map({
     container: 'map',
     // style: 'mapbox://styles/mapbox/light-v10', 
-    style: 'mapbox://styles/mapbox/light-v11',
-    center: campground.geometry.coordinates, // starting position [lng, lat]
+    style: 'mapbox://styles/mapbox/streets-v9',
+    center: place.geometry.coordinates, // starting position [lng, lat]
     zoom: 10 // starting zoom
 });
 
 map.addControl(new mapboxgl.NavigationControl());
 
 
-new mapboxgl.Marker()
+new mapboxgl.Marker({color: '#ff2052'})
     .setLngLat(place.geometry.coordinates)
     .setPopup(
         new mapboxgl.Popup({ offset: 25 })

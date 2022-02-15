@@ -3,11 +3,11 @@ const map = new mapboxgl.Map({
     container: 'cluster-map',
    
     // style: 'mapbox://styles/mapbox/light-v8',
-    // style: 'mapbox://styles/mapbox/streets-v9',
-    style: 'mapbox://styles/mapbox/light-v10',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    // style: 'mapbox://styles/mapbox/light-v10',
     // style: 'mapbox://styles/mapbox/light-v11',
     center: [-103.59179687498357, 40.66995747013945],
-    zoom: 3
+    zoom: 1
 });
 
 map.addControl(new mapboxgl.NavigationControl());
@@ -40,17 +40,39 @@ map.on('load', function () {
                 ['get', 'point_count'],
                 // '#11ffaa',
                 // '#00dd8e',
-                '#3fb1ce',
-                10,
+                // '#3fb1ce',
+                '#ff2052',
+                3,
                 // '#00c37d',
                 // '#00dd8e',
                 // '#00aa6d',
-                '#2c93ae',
-                30,
+                // '#2c93ae',
+                '#ff4770',
+                5,
                 // '#00aa6d'
                 // '#005e3c'
-                '#278299'
-                
+                // '#278299'
+                '#ff5b80',
+                10,
+                // '#00aa6d'
+                // '#005e3c'
+                // '#278299'
+                '#fe6f6e',
+                25,
+                // '#00aa6d'
+                // '#005e3c'
+                // '#278299'
+                '#fd5c5b',
+                50,
+                // '#00aa6d'
+                // '#005e3c'
+                // '#278299'
+                '#fd4847',
+                100,
+                // '#00aa6d'
+                // '#005e3c'
+                // '#278299'
+                '#fd3534'
             ],
             'circle-radius': [
                 'step',
@@ -60,6 +82,19 @@ map.on('load', function () {
                 20,
                 30,
                 25
+
+                // 3,
+                // 5,
+                // 5,
+                // 7,
+                // 10,
+                // 10,
+                // 25,
+                // 15,
+                // 50,
+                // 20,
+                // 100,
+                // 25
             ]
         }
     });
@@ -82,8 +117,10 @@ map.on('load', function () {
         source: 'places',
         filter: ['!', ['has', 'point_count']],
         paint: {
+            // color name awesome = ff2052
             // 'circle-color': '#11ffaa',
-            'circle-color': '#7ccade',
+            // 'circle-color': '#7ccade',
+            'circle-color': '#ff2052',
             'circle-radius': 4,
             'circle-stroke-width': 1,
             'circle-stroke-color': '#fff'
