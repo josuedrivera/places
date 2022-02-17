@@ -3,6 +3,94 @@
 <link rel="stylesheet" href="/stylesheets/stars.css">
 <div class="row">
     <div class="col-6">
+       
+
+
+        <div class="card mb-3">
+            
+            <!-- blog title
+            blog subtitle
+            blog intro
+            blog paragrap1-4
+            blog outro -->
+
+            <div class="card-body">
+                <h5 class="card-title"><%= place.title%></h5>
+                <p class="card-text"><%= place.description%></p>
+            </div>
+    
+            <div class="card-body">
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ea esse temporibus ipsam quaerat quis doloremque optio fugiat perferendis voluptate, ipsum veniam autem iure, quas illum. Doloremque nostrum nulla quod!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id ducimus nemo culpa, dolorum reprehenderit dicta alias accusantium? At libero adipisci autem accusantium, animi, delectus iusto magnam sequi deleniti cupiditate harum.
+                Officia illo, beatae quasi magni obcaecati debitis consectetur rerum vel sapiente. Magnam nam temporibus quod quidem consequuntur, ea culpa ducimus pariatur reprehenderit vitae officiis explicabo quia porro voluptatibus iusto eum.
+                Beatae ullam magnam commodi fuga? Commodi, quod. Obcaecati qui rerum possimus ut. Earum assumenda nobis accusamus aut laboriosam repellendus neque laborum. Accusamus minima sunt magnam explicabo dolorem cumque, iusto minus?</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam, accusantium! Itaque cumque praesentium quae, illum nam rerum odio distinctio cum expedita est neque deleniti, a in consequuntur, mollitia minima necessitatibus?
+                Enim nobis at obcaecati aliquid explicabo maiores ad recusandae quas omnis impedit corporis cum odit rerum dolorem, optio harum numquam odio iure asperiores sapiente aliquam pariatur quam? Aspernatur, hic a.
+                Magnam, ratione. Quam id iusto ab asperiores ad, animi excepturi! Cupiditate debitis adipisci, inventore at molestias hic tenetur eos explicabo quisquam ullam! Voluptatum velit labore, dicta temporibus deleniti dolorem ullam.
+                Esse provident possimus officia, vero, illum doloremque culpa iusto quidem nihil et in magni ducimus maiores quibusdam! Officia saepe perspiciatis excepturi. Iste temporibus dignissimos obcaecati quia veritatis. Tenetur, temporibus dolorem!
+                Quidem, at hic voluptas doloribus a amet commodi porro iusto rem totam odio, consequuntur vel facere est et excepturi, saepe velit obcaecati aliquid ad quo! Laborum, necessitatibus nesciunt! Voluptatem, alias.</p>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus consequatur odio, assumenda fugiat voluptatum ipsa accusantium enim? Quaerat, ullam ad eum aspernatur modi consequatur eius quod, iusto, natus blanditiis esse?</p>
+            </div>
+
+
+            <% if(currentUser){ %>
+                <h2>Leave a Review</h2>
+                <form action="/places/<%=place._id%>/reviews" method="POST" class="mb-3 validated-form" novalidate>
+                    <fieldset class="starability-basic">
+                        <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
+                            aria-label="No rating." />
+                        <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                        <label for="first-rate1" title="Terrible">1 star</label>
+                        <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                        <label for="first-rate2" title="Not good">2 stars</label>
+                        <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                        <label for="first-rate3" title="Average">3 stars</label>
+                        <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                        <label for="first-rate4" title="Very good">4 stars</label>
+                        <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                        <label for="first-rate5" title="Amazing">5 stars</label>
+                    </fieldset>
+                    <div class="mb-3">
+                        <label class="form-label" for="body">Review Text</label>
+                        <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <button class="btn btn-success">Submit</button>
+                </form>
+                <% } %>
+                <% for(let review of place.reviews) { %>
+                <div class="card mb-3 ">
+                    <div class="card-body">
+                        <h5 class="card-title"> <%= review.author.username%></h5>
+                        <p class="starability-result" data-rating="<%=review.rating%>">
+                            Rated: <%= review.rating %> stars
+                        </p>
+                        <p class="card-text">Review: <%= review.body %></p>
+                        <%  if( currentUser && review.author.equals(currentUser._id))  {%>
+                        <form action="/places/<%=place._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                        <% } %>
+                    </div>
+                </div>
+                <% } %>
+
+
+        </div>
+
+    </div>
+
+
+    <div class="card col-6">
+        
+       
+
+
+
+        
+
         <div id="placeCarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <% place.images.forEach((img, i) => {  %>
@@ -24,76 +112,40 @@
             <% } %>
         </div>
 
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title"><%= place.title%></h5>
-                <p class="card-text"><%= place.description%></p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item text-muted"><%= place.location%></li>
-                <li class="list-group-item">Submitted by <%= place.author.username%></li>
-                <li class="list-group-item">$<%= place.price%> /night</li>
-            </ul>
-            <%  if( currentUser && place.author.equals(currentUser._id))  {%>
-            <div class="card-body">
-                <a class="card-link btn btn-info" href="/places/<%=place._id%>/edit">Edit</a>
-                <form class="d-inline" action="/places/<%=place._id%>?_method=DELETE" method="POST">
-                    <button class="btn btn-danger">Delete</button>
-                </form>
-            </div>
-            <% } %>
-            <div class="card-footer text-muted">
-                2 days ago
-            </div>
+
+        <div class="card-body">
+            <h5 class="card-title"><%= place.title%></h5>
+            <p class="card-text"><%= place.description%></p>
+            <p class="card-text"><%= place.location%></p>
         </div>
 
-    </div>
-    <div class="col-6">
         <div id='map'></div>
+        
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item text-muted"><%= place.location%></li>
+            <li class="list-group-item">Submitted by <%= place.author.username%></li>
+            <li class="list-group-item">$<%= place.price%> /night</li>
+        </ul>
+        
 
-        <% if(currentUser){ %>
-        <h2>Leave a Review</h2>
-        <form action="/places/<%=place._id%>/reviews" method="POST" class="mb-3 validated-form" novalidate>
-            <fieldset class="starability-basic">
-                <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
-                    aria-label="No rating." />
-                <input type="radio" id="first-rate1" name="review[rating]" value="1" />
-                <label for="first-rate1" title="Terrible">1 star</label>
-                <input type="radio" id="first-rate2" name="review[rating]" value="2" />
-                <label for="first-rate2" title="Not good">2 stars</label>
-                <input type="radio" id="first-rate3" name="review[rating]" value="3" />
-                <label for="first-rate3" title="Average">3 stars</label>
-                <input type="radio" id="first-rate4" name="review[rating]" value="4" />
-                <label for="first-rate4" title="Very good">4 stars</label>
-                <input type="radio" id="first-rate5" name="review[rating]" value="5" />
-                <label for="first-rate5" title="Amazing">5 stars</label>
-            </fieldset>
-            <div class="mb-3">
-                <label class="form-label" for="body">Review Text</label>
-                <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-            <button class="btn btn-success">Submit</button>
-        </form>
-        <% } %>
-        <% for(let review of place.reviews) { %>
-        <div class="card mb-3 ">
-            <div class="card-body">
-                <h5 class="card-title"> <%= review.author.username%></h5>
-                <p class="starability-result" data-rating="<%=review.rating%>">
-                    Rated: <%= review.rating %> stars
-                </p>
-                <p class="card-text">Review: <%= review.body %></p>
-                <%  if( currentUser && review.author.equals(currentUser._id))  {%>
-                <form action="/places/<%=place._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
-                    <button class="btn btn-sm btn-danger">Delete</button>
-                </form>
-                <% } %>
-            </div>
+      
+
+
+        
+        <%  if( currentUser && place.author.equals(currentUser._id))  {%>
+        <div class="card-body">
+            <a class="card-link btn btn-info" href="/places/<%=place._id%>/edit">Edit</a>
+            <form class="d-inline" action="/places/<%=place._id%>?_method=DELETE" method="POST">
+                <button class="btn btn-danger">Delete</button>
+            </form>
         </div>
         <% } %>
+        <div class="card-footer text-muted">
+            2 days ago
+        </div>
+
+
+        
     </div>
 </div>
 
