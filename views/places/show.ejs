@@ -2,9 +2,23 @@
 
 <link rel="stylesheet" href="/stylesheets/stars.css">
 <div class="row">
+
+    <div class="">
+        <div class="col-10 p-2">
+            <span class="card-title display-5"><%= place.title%></span>
+            <span class="text-muted px-1">- <%= place.location%></span>
+            <!-- <hr class="col-11"> -->
+            <!-- <p class="card-text"><%= place.description%></p>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas iure reiciendis blanditiis alias nam modi repellat eius, cumque sint aut qui eaque saepe distinctio laboriosam. Laudantium ad reiciendis harum culpa.</p>
+        -->
+        </div>
+
+    </div>
+
+    
+
     <div class="col-6">
        
-
 
         <div class="card mb-3">
             
@@ -14,11 +28,53 @@
             blog paragrap1-4
             blog outro -->
 
-            <div class="card-body">
-                <h5 class="card-title"><%= place.title%></h5>
-                <p class="card-text"><%= place.description%></p>
-            </div>
+            
+
+
+            <div id="placeCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <% place.images.forEach((img, i) => {  %>
+                    <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
+                        <img src="<%= img.url%>" class="d-block w-100" alt="">
+                    </div>
+                    <% }) %>
     
+                </div>
+                <% if(place.images.length > 1) {%>
+                <a class="carousel-control-prev" href="#placeCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#placeCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+                <% } %>
+            </div>
+
+            <div class="card-body">
+                <!-- change this to blog title -->
+                <h5 class="h2 text-uppercase"><%= place.title%></h5>
+                <p class="text-muted">Submitted by <%= place.author.username%></p>
+                <!-- change this to blog intro -->
+                <p class="h6"><%= place.description%></p>
+                <hr>
+                <!-- make this a variable for blog quote and add one for quote author -->
+                <p class="blockquote text-muted px-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas iure reiciendis blanditiis alias nam modi repellat eius, cumque sint aut qui eaque saepe distinctio laboriosam. Laudantium ad reiciendis harum culpa.</p>
+                
+                <figure class="text-center">
+                    <blockquote class="blockquote">
+                      <p>A well-known quote, contained in a blockquote element.</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                      Someone famous in <cite title="Source Title">Source Title</cite>
+                    </figcaption>
+                  </figure>
+
+
+            </div>
+
+            <!-- change this to blog body - make each paragraph a variable - prob up to six paragraphs that can be left empty -->
             <div class="card-body">
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ea esse temporibus ipsam quaerat quis doloremque optio fugiat perferendis voluptate, ipsum veniam autem iure, quas illum. Doloremque nostrum nulla quod!</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id ducimus nemo culpa, dolorum reprehenderit dicta alias accusantium? At libero adipisci autem accusantium, animi, delectus iusto magnam sequi deleniti cupiditate harum.
@@ -32,121 +88,113 @@
                 <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus consequatur odio, assumenda fugiat voluptatum ipsa accusantium enim? Quaerat, ullam ad eum aspernatur modi consequatur eius quod, iusto, natus blanditiis esse?</p>
             </div>
 
-
-            <% if(currentUser){ %>
-                <h2>Leave a Review</h2>
-                <form action="/places/<%=place._id%>/reviews" method="POST" class="mb-3 validated-form" novalidate>
-                    <fieldset class="starability-basic">
-                        <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
-                            aria-label="No rating." />
-                        <input type="radio" id="first-rate1" name="review[rating]" value="1" />
-                        <label for="first-rate1" title="Terrible">1 star</label>
-                        <input type="radio" id="first-rate2" name="review[rating]" value="2" />
-                        <label for="first-rate2" title="Not good">2 stars</label>
-                        <input type="radio" id="first-rate3" name="review[rating]" value="3" />
-                        <label for="first-rate3" title="Average">3 stars</label>
-                        <input type="radio" id="first-rate4" name="review[rating]" value="4" />
-                        <label for="first-rate4" title="Very good">4 stars</label>
-                        <input type="radio" id="first-rate5" name="review[rating]" value="5" />
-                        <label for="first-rate5" title="Amazing">5 stars</label>
-                    </fieldset>
-                    <div class="mb-3">
-                        <label class="form-label" for="body">Review Text</label>
-                        <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
-                    </div>
-                    <button class="btn btn-success">Submit</button>
-                </form>
-                <% } %>
-                <% for(let review of place.reviews) { %>
-                <div class="card mb-3 ">
-                    <div class="card-body">
-                        <h5 class="card-title"> <%= review.author.username%></h5>
-                        <p class="starability-result" data-rating="<%=review.rating%>">
-                            Rated: <%= review.rating %> stars
-                        </p>
-                        <p class="card-text">Review: <%= review.body %></p>
-                        <%  if( currentUser && review.author.equals(currentUser._id))  {%>
-                        <form action="/places/<%=place._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
-                            <button class="btn btn-sm btn-danger">Delete</button>
-                        </form>
-                        <% } %>
-                    </div>
-                </div>
-                <% } %>
-
-
         </div>
 
     </div>
 
-
-    <div class="card col-6">
+    
+    <div class="card col-6 mb-3">
         
-       
-
-
-
         
-
-        <div id="placeCarousel" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <% place.images.forEach((img, i) => {  %>
-                <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
-                    <img src="<%= img.url%>" class="d-block w-100" alt="">
-                </div>
-                <% }) %>
-
-            </div>
-            <% if(place.images.length > 1) {%>
-            <a class="carousel-control-prev" href="#placeCarousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#placeCarousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-            <% } %>
-        </div>
-
-
-        <div class="card-body">
+        <!-- <div class="card-body">
             <h5 class="card-title"><%= place.title%></h5>
             <p class="card-text"><%= place.description%></p>
             <p class="card-text"><%= place.location%></p>
-        </div>
-
-        <div id='map'></div>
+        </div> -->
         
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item text-muted"><%= place.location%></li>
-            <li class="list-group-item">Submitted by <%= place.author.username%></li>
-            <li class="list-group-item">$<%= place.price%> /night</li>
+        <ul class="list-group list-group-flush pt-3">
+            <!-- <%  if( currentUser && place.author.equals(currentUser._id))  {%>
+                <div class="card-body ml-auto">
+                    <a class="card-link btn btn-info" href="/places/<%=place._id%>/edit">Edit</a>
+                    <form class="d-inline" action="/places/<%=place._id%>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+                <% } %> -->
+                
+                <div id='map'></div>
+                
+            <!-- <div class=""> -->
+                <li class="list-group-item  d-flex justify-content-between">
+                    <span> <%= place.location%> </span>
+                    <span class=" text-right text-muted ">Monday, February 14, 2022</span>
+                </li>
+            <!-- </div> -->
+            <!-- <li class="list-group-item text-muted"><%= place.location%></li> -->
+            <!-- this will be the date visited probs -->
+            <!-- <li class="list-group-item text-muted"><%= place.location%></li> -->
+            <li class="list-group-item"><%= place.title%></li>
+            <!-- <li class="list-group-item">Submitted by <%= place.author.username%></li> -->
+            <!-- <li class="list-group-item">$<%= place.price%> /night</li> -->
+            <li class="list-group-item"><%= place.description%> </li>
         </ul>
         
-
-      
-
-
-        
         <%  if( currentUser && place.author.equals(currentUser._id))  {%>
-        <div class="card-body">
-            <a class="card-link btn btn-info" href="/places/<%=place._id%>/edit">Edit</a>
-            <form class="d-inline" action="/places/<%=place._id%>?_method=DELETE" method="POST">
-                <button class="btn btn-danger">Delete</button>
-            </form>
-        </div>
-        <% } %>
+            <div class="card my-2">
+                <div class="card-body ml-auto">
+                    <a class="card-link btn btn-info" href="/places/<%=place._id%>/edit">Edit</a>
+                    <form class="d-inline" action="/places/<%=place._id%>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+         <% } %>
+       
         <div class="card-footer text-muted">
-            2 days ago
+            Share your thoughs
         </div>
 
+        <% if(currentUser){ %>
+            <div class="col-10 offset-1">
 
-        
+            
+            <h2 class="my-2">Leave a Review</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium itaque hic totam, at natus mollitia deserunt fugit sit accusamus? Fugiat, repudiandae? Reiciendis similique dicta molestiae quia natus voluptas? Necessitatibus, reiciendis.</p>
+        </div>
+            <form action="/places/<%=place._id%>/reviews" method="POST" class="mb-3 d-flex flex-column validated-form" novalidate>
+                <!-- <fieldset class="starability-basic">
+                    <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
+                        aria-label="No rating." />
+                    <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                    <label for="first-rate1" title="Terrible">1 star</label>
+                    <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                    <label for="first-rate2" title="Not good">2 stars</label>
+                    <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                    <label for="first-rate3" title="Average">3 stars</label>
+                    <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                    <label for="first-rate4" title="Very good">4 stars</label>
+                    <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                    <label for="first-rate5" title="Amazing">5 stars</label>
+                </fieldset> -->
+                <div class="mb-2">
+                    <hr>
+                    <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
+                    <label class="form-label pt-3" for="body">Please Leave a Review or Comment</label>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <button class="btn btn-success ml-auto">Submit</button>
+            </form>
+            <% } %>
+            <% for(let review of place.reviews) { %>
+            <div class="card mb-3 ">
+                <div class="card-body">
+                    <h5 class="card-title"> <%= review.author.username%></h5>
+                    <p class="starability-result" data-rating="<%=review.rating%>">
+                        Rated: <%= review.rating %> stars
+                    </p>
+                    <p class="card-text">Review: <%= review.body %></p>
+                    <%  if( currentUser && review.author.equals(currentUser._id))  {%>
+                    <form action="/places/<%=place._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                    <% } %>
+                </div>
+            </div>
+            <% } %>
     </div>
+
 </div>
 
 <script>
