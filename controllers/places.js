@@ -31,6 +31,18 @@ module.exports.createPlace = async (req, res, next) => {
     place.geometry = geoData.body.features[0].geometry;
     place.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
     place.author = req.user._id;
+    // place.blogTitle = String;
+    // place.blogIntro = String;
+    // place.blogQuote = String;
+    // place.quoteAuthor = String;
+    // place.quoteSource = String;
+    // place.blogP1 = String;
+    // place.blogP2 = String;
+    // place.blogP3 = String;
+    // place.blogP4 = String;
+    // place.blogP5 = String;
+    // place.blogP6 = String;
+    // place.visitDate = String;
     await place.save();
     console.log(place);
     req.flash('success', 'Successfully made a new place!');

@@ -21,16 +21,12 @@
                     Looks good!
                 </div>
             </div>
-
             <div class="mb-3">
-                <label class="form-label" for="price">Place Price</label>
-                <div class="input-group">
-                    <span class="input-group-text" id="price-label">$</span>
-                    <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
-                        aria-describedby="price-label" name="place[price]" value="<%=place.price %>"
-                        required>\<div class="valid-feedback">
-                        Looks good!
-                    </div>
+                <label class="form-label" for="visitDate">Visit Date</label>
+                <input class="form-control" type="text" id="visitDate" name="place[visitDate]"
+                    value="<%=place.visitDate %>" required>
+                <div class="valid-feedback">
+                    Looks good!
                 </div>
             </div>
 
@@ -42,6 +38,139 @@
                     Looks good!
                 </div>
             </div>
+            <!-- <div class="mb-3">
+                <label class="form-label" for="price">Place Price</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-label">$</span>
+                    <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
+                        aria-describedby="price-label" name="place[price]" value="<%=place.price %>"
+                        required>\<div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- place.blogTitle = String;
+            place.blogIntro = String;
+            place.blogQuote = String;
+            place.quoteAuthor = String;
+            place.quoteSource = String;
+            place.blogP1 = String;
+            place.blogP2 = String;
+            place.blogP3 = String;
+            place.blogP4 = String;
+            place.blogP5 = String;
+            place.blogP6 = String;
+            place.visitDate = String; -->
+            
+            <div class="mb-3">
+                <label class="form-label" for="blogTitle">Blog Title</label>
+                <input class="form-control" type="text" id="blogTitle" name="place[blogTitle]"
+                    value="<%=place.blogTitle %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="publishDate">Publish Date</label>
+                <input class="form-control" type="text" id="publishDate" name="place[publishDate]"
+                    value="<%=place.publishDate %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="blogIntro">Blog Intro</label>
+                <input class="form-control" type="text" id="blogIntro" name="place[blogIntro]"
+                    value="<%=place.blogIntro %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            
+
+
+
+            <div class="mb-3">
+                <label class="form-label" for="blogP1">Blog P1</label>
+                <textarea class="form-control" type="text" id="blogP1" name="place[blogP1]"
+                    required><%= place.blogP1%></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="blogP2">Blog P2</label>
+                <textarea class="form-control" type="text" id="blogP2" name="place[blogP2]"
+                    required><%= place.blogP2%></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="blogP3">Blog P3</label>
+                <textarea class="form-control" type="text" id="blogP3" name="place[blogP3]"
+                    required><%= place.blogP3%></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="blogP4">Blog P4</label>
+                <textarea class="form-control" type="text" id="blogP4" name="place[blogP4]"
+                    required><%= place.blogP4%></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="blogP5">Blog P5</label>
+                <textarea class="form-control" type="text" id="blogP5" name="place[blogP5]"
+                    required><%= place.blogP5%></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="blogP6">Blog P6</label>
+                <textarea class="form-control" type="text" id="blogP6" name="place[blogP6]"
+                    required><%= place.blogP6%></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+
+            <div class="mb-3">
+                <label class="form-label" for="blogQuote">Blog Quote</label>
+                <input class="form-control" type="text" id="blogQuote" name="place[blogQuote]"
+                    value="<%=place.blogQuote %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="quoteAuthor">Quote Author</label>
+                <input class="form-control" type="text" id="quoteAuthor" name="place[quoteAuthor]"
+                    value="<%=place.quoteAuthor %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="quoteSource"> Quote Source </label>
+                <input class="form-control" type="text" id="quoteSource" name="place[quoteSource]"
+                    value="<%=place.quoteSource %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+        
+
+
             <div class="mb-3">
                 <div class="form-file custom-file">
                     <input type="file" class="form-file-input" id="image" name="image" multiple>

@@ -7,29 +7,17 @@
         <div class="col-10 p-2">
             <span class="card-title display-5"><%= place.title%></span>
             <span class="text-muted px-1">- <%= place.location%></span>
-            <!-- <hr class="col-11"> -->
-            <!-- <p class="card-text"><%= place.description%></p>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas iure reiciendis blanditiis alias nam modi repellat eius, cumque sint aut qui eaque saepe distinctio laboriosam. Laudantium ad reiciendis harum culpa.</p>
-        -->
         </div>
-
     </div>
 
-    
-
-    <div class="col-6">
-       
-
-        <div class="card mb-3">
-            
-            <!-- blog title
+     <!-- blog title
             blog subtitle
             blog intro
             blog paragrap1-4
             blog outro -->
 
-            
-
+    <div class="col-6">
+        <div class="card mb-3">
 
             <div id="placeCarousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
@@ -38,7 +26,6 @@
                         <img src="<%= img.url%>" class="d-block w-100" alt="">
                     </div>
                     <% }) %>
-    
                 </div>
                 <% if(place.images.length > 1) {%>
                 <a class="carousel-control-prev" href="#placeCarousel" role="button" data-slide="prev">
@@ -54,29 +41,35 @@
 
             <div class="card-body">
                 <!-- change this to blog title -->
-                <h5 class="h2 text-uppercase"><%= place.title%></h5>
+                <h5 class="h2 text-uppercase"><%= place.blogTitle%></h5>
+                <h5 class="h6 text-uppercase"><%= place.publishDate%></h5>
                 <p class="text-muted">Submitted by <%= place.author.username%></p>
                 <!-- change this to blog intro -->
-                <p class="h6"><%= place.description%></p>
+                <p class="h6"><%= place.blogIntro%></p>
                 <hr>
                 <!-- make this a variable for blog quote and add one for quote author -->
-                <p class="blockquote text-muted px-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas iure reiciendis blanditiis alias nam modi repellat eius, cumque sint aut qui eaque saepe distinctio laboriosam. Laudantium ad reiciendis harum culpa.</p>
-                
                 <figure class="text-center">
                     <blockquote class="blockquote">
-                      <p>A well-known quote, contained in a blockquote element.</p>
+                        <p><%= place.blogQuote%></p>
+                      <!-- <p>A well-known quote, contained in a blockquote element. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas iure reiciendis blanditiis alias nam modi repellat eius, cumque sint aut qui eaque saepe distinctio laboriosam. Laudantium ad reiciendis harum culpa.</p> -->
                     </blockquote>
                     <figcaption class="blockquote-footer">
-                      Someone famous in <cite title="Source Title">Source Title</cite>
+                      <!-- Someone famous in <cite title="Source Title">Source Title</cite> -->
+                      <%= place.quoteAuthor%><cite title="Source Title"><%= place.quoteSource%></cite>
                     </figcaption>
                   </figure>
-
-
             </div>
 
             <!-- change this to blog body - make each paragraph a variable - prob up to six paragraphs that can be left empty -->
             <div class="card-body">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ea esse temporibus ipsam quaerat quis doloremque optio fugiat perferendis voluptate, ipsum veniam autem iure, quas illum. Doloremque nostrum nulla quod!</p>
+                <p><%= place.blogP1%></p>
+                <p><%= place.blogP2%></p>
+                <p><%= place.blogP3%></p>
+                <p><%= place.blogP4%></p>
+                <p><%= place.blogP5%></p>
+                <p class="text-muted"><%= place.blogP6%></p>
+
+                <!-- <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ea esse temporibus ipsam quaerat quis doloremque optio fugiat perferendis voluptate, ipsum veniam autem iure, quas illum. Doloremque nostrum nulla quod!</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id ducimus nemo culpa, dolorum reprehenderit dicta alias accusantium? At libero adipisci autem accusantium, animi, delectus iusto magnam sequi deleniti cupiditate harum.
                 Officia illo, beatae quasi magni obcaecati debitis consectetur rerum vel sapiente. Magnam nam temporibus quod quidem consequuntur, ea culpa ducimus pariatur reprehenderit vitae officiis explicabo quia porro voluptatibus iusto eum.
                 Beatae ullam magnam commodi fuga? Commodi, quod. Obcaecati qui rerum possimus ut. Earum assumenda nobis accusamus aut laboriosam repellendus neque laborum. Accusamus minima sunt magnam explicabo dolorem cumque, iusto minus?</p>
@@ -85,7 +78,7 @@
                 Magnam, ratione. Quam id iusto ab asperiores ad, animi excepturi! Cupiditate debitis adipisci, inventore at molestias hic tenetur eos explicabo quisquam ullam! Voluptatum velit labore, dicta temporibus deleniti dolorem ullam.
                 Esse provident possimus officia, vero, illum doloremque culpa iusto quidem nihil et in magni ducimus maiores quibusdam! Officia saepe perspiciatis excepturi. Iste temporibus dignissimos obcaecati quia veritatis. Tenetur, temporibus dolorem!
                 Quidem, at hic voluptas doloribus a amet commodi porro iusto rem totam odio, consequuntur vel facere est et excepturi, saepe velit obcaecati aliquid ad quo! Laborum, necessitatibus nesciunt! Voluptatem, alias.</p>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus consequatur odio, assumenda fugiat voluptatum ipsa accusantium enim? Quaerat, ullam ad eum aspernatur modi consequatur eius quod, iusto, natus blanditiis esse?</p>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus consequatur odio, assumenda fugiat voluptatum ipsa accusantium enim? Quaerat, ullam ad eum aspernatur modi consequatur eius quod, iusto, natus blanditiis esse?</p> -->
             </div>
 
         </div>
@@ -94,14 +87,6 @@
 
     
     <div class="card col-6 mb-3">
-        
-        
-        <!-- <div class="card-body">
-            <h5 class="card-title"><%= place.title%></h5>
-            <p class="card-text"><%= place.description%></p>
-            <p class="card-text"><%= place.location%></p>
-        </div> -->
-        
         <ul class="list-group list-group-flush pt-3">
             <!-- <%  if( currentUser && place.author.equals(currentUser._id))  {%>
                 <div class="card-body ml-auto">
@@ -114,18 +99,13 @@
                 
                 <div id='map'></div>
                 
-            <!-- <div class=""> -->
                 <li class="list-group-item  d-flex justify-content-between">
                     <span> <%= place.location%> </span>
-                    <span class=" text-right text-muted ">Monday, February 14, 2022</span>
+                    <!-- <span class=" text-right text-muted ">Monday, February 14, 2022</span> -->
+                    <span class=" text-right text-muted "><%= place.visitDate%> </span>
                 </li>
-            <!-- </div> -->
-            <!-- <li class="list-group-item text-muted"><%= place.location%></li> -->
-            <!-- this will be the date visited probs -->
-            <!-- <li class="list-group-item text-muted"><%= place.location%></li> -->
+
             <li class="list-group-item"><%= place.title%></li>
-            <!-- <li class="list-group-item">Submitted by <%= place.author.username%></li> -->
-            <!-- <li class="list-group-item">$<%= place.price%> /night</li> -->
             <li class="list-group-item"><%= place.description%> </li>
         </ul>
         
@@ -145,9 +125,7 @@
         </div>
 
         <% if(currentUser){ %>
-            <div class="col-10 offset-1">
-
-            
+        <div class="col-10 offset-1">            
             <h2 class="my-2">Leave a Review</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium itaque hic totam, at natus mollitia deserunt fugit sit accusamus? Fugiat, repudiandae? Reiciendis similique dicta molestiae quia natus voluptas? Necessitatibus, reiciendis.</p>
         </div>

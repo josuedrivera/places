@@ -27,13 +27,26 @@ const PlaceSchema = new Schema({
             required: true
         }
     },
-    price: Number,
+    // price: Number,
     description: String,
     location: String,
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
+    blogTitle: String,
+    publishDate: String,
+    blogIntro: String,
+    blogQuote: String,
+    quoteAuthor: String,
+    quoteSource: String,
+    blogP1: String,
+    blogP2: String,
+    blogP3: String,
+    blogP4: String,
+    blogP5: String,
+    blogP6: String,
+    visitDate: String,
     reviews: [
         {
             type: Schema.Types.ObjectId,

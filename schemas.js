@@ -26,9 +26,22 @@ const Joi = BaseJoi.extend(extension)
 module.exports.placeSchema = Joi.object({
         place: Joi.object({
         title: Joi.string().required().escapeHTML(),
-        price: Joi.number().required().min(0),
+        // price: Joi.number().required().min(0),
         location: Joi.string().required().escapeHTML(),
-        description: Joi.string().required().escapeHTML()
+        description: Joi.string().required().escapeHTML(),
+        blogTitle: Joi.string().required().escapeHTML(),
+        publishDate: Joi.string().required().escapeHTML(),
+        blogIntro: Joi.string().required().escapeHTML(),
+        blogQuote: Joi.string().required().escapeHTML(),
+        quoteAuthor: Joi.string().required().escapeHTML(),
+        quoteSource: Joi.string().required().escapeHTML(),
+        blogP1: Joi.string().required().escapeHTML(),
+        blogP2: Joi.string().required().escapeHTML(),
+        blogP3: Joi.string().required().escapeHTML(),
+        blogP4: Joi.string().required().escapeHTML(),
+        blogP5: Joi.string().required().escapeHTML(),
+        blogP6: Joi.string().required().escapeHTML(),
+        visitDate: Joi.string().required().escapeHTML(),
     }).required(),
     deleteImages: Joi.array()
 });
