@@ -30,6 +30,7 @@ module.exports.placeSchema = Joi.object({
         location: Joi.string().required().escapeHTML(),
         description: Joi.string().required().escapeHTML(),
         blogTitle: Joi.string().required().escapeHTML(),
+        visitDate: Joi.string().required().escapeHTML(),
         publishDate: Joi.string().required().escapeHTML(),
         blogIntro: Joi.string().required().escapeHTML(),
         blogQuote: Joi.string().required().escapeHTML(),
@@ -41,7 +42,6 @@ module.exports.placeSchema = Joi.object({
         blogP4: Joi.string().required().escapeHTML(),
         blogP5: Joi.string().required().escapeHTML(),
         blogP6: Joi.string().required().escapeHTML(),
-        visitDate: Joi.string().required().escapeHTML(),
     }).required(),
     deleteImages: Joi.array()
 });

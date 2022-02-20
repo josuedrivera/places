@@ -3,9 +3,10 @@
 <div class="row">
     <h1 class="text-center">New Place</h1>
     <div class="col-md-6 offset-md-3">
+
         <form action="/places" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
             <div class="mb-3">
-                <label class="form-label" for="title">Title</label>
+                <label class="form-label" for="title">Place Title</label>
                 <input class="form-control" type="text" id="title" name="place[title]" required>
                 <div class="valid-feedback">
                     Looks good!
@@ -18,8 +19,121 @@
                     Looks good!
                 </div>
             </div>
+            <div class="mb-3">
+                <label class="form-label" for="visitDate">Visit Date</label>
+                <input class="form-control" type="text" id="visitDate" name="place[visitDate]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" type="text" id="description" name="place[description]"
+                    required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <hr>
 
             <div class="mb-3">
+                <label class="form-label" for="blogTitle">Blog Title</label>
+                <input class="form-control" type="text" id="blogTitle" name="place[blogTitle]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="publishDate">Publish Date</label>
+                <input class="form-control" type="text" id="publishDate" name="place[publishDate]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="blogIntro">Blog Intro</label>
+                <input class="form-control" type="text" id="blogIntro" name="place[blogIntro]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+
+            <div class="mb-3">
+                <label class="form-label" for="blogQuote">Blog Quote</label>
+                <input class="form-control" type="text" id="blogQuote" name="place[blogQuote]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="quoteAuthor">Quote Author</label>
+                <input class="form-control" type="text" id="quoteAuthor" name="place[quoteAuthor]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="quoteSource"> Quote Source </label>
+                <input class="form-control" type="text" id="quoteSource" name="place[quoteSource]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+
+            <div class="mb-3">
+                <label class="form-label" for="blogP1">Blog P1</label>
+                <textarea class="form-control" type="text" id="blogP1" name="place[blogP1]"
+                    required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="blogP2">Blog P2</label>
+                <textarea class="form-control" type="text" id="blogP2" name="place[blogP2]"
+                    required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="blogP3">Blog P3</label>
+                <textarea class="form-control" type="text" id="blogP3" name="place[blogP3]"
+                    required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="blogP4">Blog P4</label>
+                <textarea class="form-control" type="text" id="blogP4" name="place[blogP4]"
+                    required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="blogP5">Blog P5</label>
+                <textarea class="form-control" type="text" id="blogP5" name="place[blogP5]"
+                    required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="blogP6">Blog P6</label>
+                <textarea class="form-control" type="text" id="blogP6" name="place[blogP6]"
+                    required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <!-- <div class="mb-3">
                 <label class="form-label" for="price">Place Price</label>
                 <div class="input-group">
                     <span class="input-group-text" id="price-label">$</span>
@@ -29,16 +143,9 @@
                 <div class="valid-feedback">
                     Looks good!
                 </div>
-            </div>
+            </div> -->
 
-            <div class="mb-3">
-                <label class="form-label" for="description">Description</label>
-                <textarea class="form-control" type="text" id="description" name="place[description]"
-                    required></textarea>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
+            
             <div class="mb-3">
                 <div class="form-file custom-file">
                     <input type="file" class="form-file-input" id="image" name="image" multiple>
