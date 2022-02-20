@@ -47,8 +47,8 @@ app.use(mongoSanitize({
     replaceWith: '_'
 }));
 
-// const secret =  process.env.SECRET || 'thisshouldbeabettersecret!';
-const secret = 'thisshouldbeabettersecret!';
+const secret =  process.env.SECRET || 'thisshouldbeabettersecret!';
+// const secret = 'thisshouldbeabettersecret!';
 
 const store = MongoDBStore.create({  
       mongoUrl: dbUrl,
@@ -155,8 +155,8 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err })
 })
 
-// const port = process.env.PORT || 3000;
-const port = 3000;
+const port = process.env.PORT || 3000;
+// const port = 3000;
 app.listen(port, () => {
     console.log(`Serving on port ${port}`)
 })
