@@ -19,8 +19,9 @@ const userRoutes = require('./routes/users');
 const placeRoutes = require('./routes/places');
 const reviewRoutes = require('./routes/reviews');
 const MongoDBStore = require('connect-mongo');
-// const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/places2go';
-const dbUrl = 'mongodb://localhost:27017/places';
+// mongodb+srv://josuedrivera:<password>@cluster0.7u8pf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/places';
+// const dbUrl = 'mongodb://localhost:27017/places';
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
