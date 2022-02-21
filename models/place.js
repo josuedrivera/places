@@ -15,7 +15,7 @@ const opts = { toJSON: { virtuals: true } };
 
 const PlaceSchema = new Schema({
     title: String,
-    images: [ImageSchema],
+    location: String,
     geometry: {
         type: {
             type: String,
@@ -29,9 +29,9 @@ const PlaceSchema = new Schema({
     },
     // price: Number,
     description: String,
-    location: String,
-    blogTitle: String,
     visitDate: String,
+    images: [ImageSchema],
+    blogTitle: String,
     publishDate: String,
     blogIntro: String,
     blogQuote: String,
