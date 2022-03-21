@@ -1,13 +1,13 @@
 <% layout('layouts/boilerplate')%>
 
 <div id="cluster-map"></div>
-<div class="container">
+<div class="container pb-5">
     <h1 class="display-4 text-center py-4">All Places</h1>
 
     <% for (let place of places){%>
-    <div class="card border-danger my-2">
+    <div class="card my-2">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-lg-4">
                 <%if(place.images.length) {%>
                 <img class="img-fluid" alt="" src="<%=place.images[0].url%>">
                 <% }else {%>
@@ -15,7 +15,7 @@
                     src="https://res.cloudinary.com/douqbebwk/image/upload/v1600103881/YelpCamp/lz8jjv2gyynjil7lswf4.png">
                 <% } %>
             </div>
-            <div class="col-md-8">
+            <div class="col-lg-8">
                 <div class="card-body">
                     <h5 class="card-title text-uppercase"><%= place.title %> </h5>
                     <p class="card-text"><%= place.description %></p>
@@ -31,6 +31,20 @@
         </div>
     </div>
     <% }%>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled">
+            <a class="page-link">Previous</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+    <div class="text-center pt-3"><a href="#cluster-map">Back 2 Top ^</a></div>
 </div>
 
 <script>
@@ -39,3 +53,4 @@
 </script>
 
 <script src="/javascripts/clusterMap.js"></script>
+

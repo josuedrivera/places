@@ -7,15 +7,21 @@
     <title>places2Go</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
         integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    
+        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Kavoon&display=swap" rel="stylesheet">
+         -->
     <link rel="stylesheet" href="/stylesheets/home.css">
 </head>
 
 <body class="d-flex text-center text-white bg-dark">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="mb-auto">
-            <div class="row justify-content-center">
+            <!-- <div class="row justify-content-center">
                 <h3 class="float-md-left mb-0 col-md-4    ">places2Go</h3>
-                <nav class="nav nav-masthead justify-content-center float-md-right  col-md-10">
+                
+                <nav class="nav nav-masthead justify-content-center float-md-right col-md-8 display-6">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                     <a class="nav-link" href="/places">All Places</a>
                     <% if(!currentUser) { %>
@@ -25,14 +31,33 @@
                     <a class="nav-link" href="/logout">Logout</a>
                     <% } %>
                 </nav>
-            </div>
+            </div> -->
         </header>
         <main class="px-3">
-            <h1 class="display-3">Places 2 Go</h1>
+            <h1 id="logo-text" class="display-1">Places 2 Go</h1>
             <p class="lead"> Capture and Share the World's Moments</p>
-            <p>Check out some of the cool places I've been and some of my favotire people and animals I came across. 
-                <br>Register to add your own and help me look for more cool places to explore. 
-                <br>Feel free to share your thoughts on places you've also been or would like to go to!</p>
+            <div class="row justify-content-center">
+                <!-- <h3 class="float-md-left mb-0 col-md-4    ">places2Go</h3> -->
+                
+                <nav class="nav nav-masthead justify-content-center float-md-right col-md-8 h2 pb-4">
+                    <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
+                    <!-- <a class="nav-link" href="/places">All Places</a> -->
+                    <% if(!currentUser) { %>
+                    <a class="nav-link" href="/login">Login</a>
+                    <a class="nav-link" href="/register">Register</a>
+                    <% } else { %>
+                    <a class="nav-link" href="/logout">Logout</a>
+                    <% } %>
+                </nav>
+            </div>
+            
+            <div class="row justify-content-center">
+                <p class="col-md-4 text-muted">
+                    Come along on my journey to places <br>
+                    Experience the special moments and meet the people and animals I've met along the way. Register to leave comments, share thoughts, or ask questions.
+                    <strong>Stay tuned for updates and new features, Safe Travels! </strong>
+                </p>
+            </div>
             <a href="https://josuedrivera.com" class="btn btn-lg btn-outline-secondary">josuedrivera.com</a>
             <a href="/places" class="btn btn-lg btn-dark font-weight-bold border-white ">View All Places</a>
         </main>
